@@ -1,0 +1,238 @@
+<?xml version="1.0"?>
+    <AlteryxDocument yxmdVer="11.3"><Nodes>
+<Node ToolID="1">
+  <GuiSettings Plugin="AlteryxGuiToolkit.Questions.Tab.Tab">
+    <Position x="0" y="0" width="59" height="59"/>
+  </GuiSettings>
+  <Properties>
+    <Configuration/>
+    <Annotation DisplayMode="0">
+      <Name/>
+      <DefaultAnnotationText/>
+      <Left value="False"/>
+    </Annotation>
+  </Properties>
+</Node>
+<Node ToolID="2">
+  <GuiSettings Plugin="AlteryxBasePluginsGui.MacroInput.MacroInput">
+    <Position x="138" y="66"/>
+  </GuiSettings>
+  <Properties>
+    <Configuration>
+      <UseFileInput value="False"/>
+      <Name>PassThrough</Name>
+      <Abbrev>P</Abbrev>
+      <ShowFieldMap value="True"/>
+      <Optional value="False"/>
+      <TextInput>
+        <Configuration>
+          <NumRows value="0"/>
+          <Fields/>
+          <Data/>
+        </Configuration>
+      </TextInput>
+    </Configuration>
+    <Annotation DisplayMode="0">
+      <Name/>
+      <DefaultAnnotationText/>
+      <Left value="True"/>
+    </Annotation>
+  </Properties>
+  <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroInput"/>
+</Node>
+<Node ToolID="3">
+  <GuiSettings Plugin="AlteryxBasePluginsGui.MacroInput.MacroInput">
+    <Position x="138" y="132"/>
+  </GuiSettings>
+  <Properties>
+    <Configuration>
+      <UseFileInput value="False"/>
+      <Name>FileInput</Name>
+      <Abbrev>F</Abbrev>
+      <ShowFieldMap value="True"/>
+      <Optional value="False"/>
+      <TextInput>
+        <Configuration>
+          <NumRows value="0"/>
+          <Fields/>
+          <Data/>
+        </Configuration>
+      </TextInput>
+    </Configuration>
+    <Annotation DisplayMode="0">
+      <Name/>
+      <DefaultAnnotationText/>
+      <Left value="True"/>
+    </Annotation>
+  </Properties>
+  <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroInput"/>
+</Node>
+<Node ToolID="7">
+  <GuiSettings Plugin="AlteryxBasePluginsGui.MacroOutput.MacroOutput">
+    <Position x="338" y="66"/>
+  </GuiSettings>
+  <Properties>
+    <Configuration>
+      <Name>FileOutput_Success</Name>
+      <Abbrev>S</Abbrev>
+    </Configuration>
+    <Annotation DisplayMode="0">
+      <Name/>
+      <DefaultAnnotationText/>
+      <Left value="False"/>
+    </Annotation>
+  </Properties>
+  <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroOutput"/>
+</Node>
+<Node ToolID="8">
+  <GuiSettings Plugin="AlteryxBasePluginsGui.MacroOutput.MacroOutput">
+    <Position x="338" y="132"/>
+  </GuiSettings>
+  <Properties>
+    <Configuration>
+      <Name>FileOutput_Error</Name>
+      <Abbrev>E</Abbrev>
+    </Configuration>
+    <Annotation DisplayMode="0">
+      <Name/>
+      <DefaultAnnotationText/>
+      <Left value="False"/>
+    </Annotation>
+  </Properties>
+  <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroOutput"/>
+</Node>
+<Node ToolID="9">
+  <GuiSettings Plugin="AlteryxBasePluginsGui.MacroOutput.MacroOutput">
+    <Position x="338" y="198"/>
+  </GuiSettings>
+  <Properties>
+    <Configuration>
+      <Name>PassThrough</Name>
+      <Abbrev>P</Abbrev>
+    </Configuration>
+    <Annotation DisplayMode="0">
+      <Name/>
+      <DefaultAnnotationText/>
+      <Left value="False"/>
+    </Annotation>
+  </Properties>
+  <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroOutput"/>
+</Node></Nodes><Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType><Constants>
+<Constant>
+  <Namespace>Question</Namespace>
+  <Name>PassThrough</Name>
+  <Value/>
+  <IsNumeric value="False"/>
+</Constant>
+<Constant>
+  <Namespace>Question</Namespace>
+  <Name>FileInput</Name>
+  <Value/>
+  <IsNumeric value="False"/>
+</Constant>
+<Constant>
+  <Namespace>Question</Namespace>
+  <Name>FileOutput_Success</Name>
+  <Value/>
+  <IsNumeric value="False"/>
+</Constant>
+<Constant>
+  <Namespace>Question</Namespace>
+  <Name>FileOutput_Error</Name>
+  <Value/>
+  <IsNumeric value="False"/>
+</Constant>
+<Constant>
+  <Namespace>Question</Namespace>
+  <Name>PassThrough</Name>
+  <Value/>
+  <IsNumeric value="False"/>
+</Constant></Constants><MetaInfo>
+    <NameIsFileName value="True" />
+    <Name>DirectoryCreatorEngine</Name>
+    <Description />
+    <RootToolName />
+    <ToolVersion />
+    <ToolInDb value="False" />
+    <CategoryName />
+    <SearchTags />
+    <Author />
+    <Company />
+    <Copyright />
+    <DescriptionLink actual="" displayed="" />
+    <Example>
+    <Description />
+    <File />
+    </Example>
+    </MetaInfo>
+    <Events>
+    <Enabled value="True" />
+    </Events>
+    <RuntimeProperties>
+    <Actions /><Questions>
+    <Question>
+    <Type>Tab</Type>
+    <Description>Questions</Description>
+    <Name>Tab (1)</Name>
+    <ToolId value="1" />
+    <Questions>
+<Question>
+  <Type>MacroInput</Type>
+  <Description/>
+  <Name>PassThrough</Name>
+  <ToolId value="2"/>
+</Question>
+<Question>
+  <Type>MacroInput</Type>
+  <Description/>
+  <Name>FileInput</Name>
+  <ToolId value="3"/>
+</Question>
+<Question>
+  <Type>MacroOutput</Type>
+  <Description/>
+  <Name>FileOutput_Success</Name>
+  <ToolId value="7"/>
+</Question>
+<Question>
+  <Type>MacroOutput</Type>
+  <Description/>
+  <Name>FileOutput_Error</Name>
+  <ToolId value="8"/>
+</Question>
+<Question>
+  <Type>MacroOutput</Type>
+  <Description/>
+  <Name>PassThrough</Name>
+  <ToolId value="9"/>
+</Question></Questions></Question></Questions><ModuleType>Macro</ModuleType>
+    <MacroCustomHelp value="False" />
+    <MacroDynamicOutputFields value="False" />
+    <MacroImageStd value="39" />
+    <MacroInputs />
+    <MacroOutputs />
+    <Wiz_CustomHelp value="False" />
+    <Wiz_CustomGraphic value="False" />
+    <Wiz_ShowOutput value="True" />
+    <Wiz_OpenOutputTools>
+    </Wiz_OpenOutputTools>
+    <Wiz_OutputMessage />
+    <Wiz_NoOutputFilesMessage />
+    <Wiz_ChainRunWizard />
+    </RuntimeProperties>
+    </Properties></AlteryxDocument>

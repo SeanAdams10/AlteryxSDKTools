@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<Configuration>
+	<Properties>
+		<MetaInfo>
+			<Icon>DirectoryCreate\DirectoryCreateIcon.png</Icon>
+			<Name>Directory Create Tool</Name>
+			<CategoryName>ACE Tools</CategoryName>
+			<ToolVersion>1.0.0</ToolVersion>
+			<Author>Sean Adams</Author>
+			<Description>This tool allows the user to create directories from a canvas</Description>
+		</MetaInfo>
+	</Properties>
+</Configuration>
+  

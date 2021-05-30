@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<AlteryxJavaScriptPlugin>
+  <EngineSettings EngineDllEntryPoint="DirectoryCreator\Supporting_Macros\DirectoryCreatorEngine.yxmc" EngineDll="Macro" SDKVersion="10.1"/>
+  <Properties>
+    <MetaInfo>
+      <NameIsFileName value="True"/>
+      <Name>DirectoryCreator</Name>
+      <Description>Directory Creator Tool to enable users to create folders from within Alteryx</Description>
+      <RootToolName>ACE_Tools</RootToolName>
+      <ToolVersion>1</ToolVersion>
+      <ToolInDB value="false"/>
+      <CategoryName/>
+      <SearchTags/>
+      <Author>Sean Adams</Author>
+      <Company>Alteryx ACE</Company>
+      <Copyright>2021</Copyright>
+      <DescriptionLink actual="" display=""/>
+    </MetaInfo>
+  </Properties>
+  <GuiSettings Help="" Html="DirectoryCreatorGui.html" Icon="DirectoryCreatorIcon.png" SDKVersion="10.1">
+    <InputConnections>
+      <Connection Name="PassThrough" AllowMultiple="False" Optional="False" Type="Connection" Label="P"/>
+      <Connection Name="FileInput" AllowMultiple="False" Optional="False" Type="Connection" Label="F"/>
+    </InputConnections>
+    <OutputConnections>
+      <Connection Name="FileOutput_Success" AllowMultiple="False" Optional="False" Type="Connection" Label="S"/>
+      <Connection Name="FileOutput_Error" AllowMultiple="False" Optional="False" Type="Connection" Label="E"/>
+      <Connection Name="PassThrough" AllowMultiple="False" Optional="False" Type="Connection" Label="P"/>
+    </OutputConnections>
+  </GuiSettings>
+</AlteryxJavaScriptPlugin>

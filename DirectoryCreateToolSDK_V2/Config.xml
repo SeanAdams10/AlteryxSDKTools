@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AlteryxJavaScriptPlugin>
+  <Properties>
+    <MetaInfo>
+      <Name>DirectoryCreator</Name>
+      <Description>Directory Creator Tool to enable users to create folders from within Alteryx</Description>
+      <ToolVersion>1</ToolVersion>
+      <CategoryName>ACE Tools</CategoryName>
+      <Author>Sean Adams</Author>
+      <Icon>DirectoryCreatorIcon.png</Icon>
+    </MetaInfo>
+  </Properties>
+</AlteryxJavaScriptPlugin>

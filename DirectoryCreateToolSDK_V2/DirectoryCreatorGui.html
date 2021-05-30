@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>DirectoryCreator</title>
+    <script type="text/javascript">
+     // Include the base GUI library.
+     document.write('<link rel="import" href="' + window.Alteryx.LibDir + '2/lib/includes.html">');
+    </script>
+    <style type="text/css">
+      body {
+        margin: 15px;
+      }
+      #widgetList {
+        padding-bottom: 20px;
+      }
+      .header-ruler {
+        background-color: #cccccc;
+        height: 1px;
+        border: 0 none;
+        flex-grow: 1;
+        margin-top: 0.625em;
+        margin-left: 10px;
+      }
+      .header-message {
+        color: #52617f;
+        font-size: 1.78em;
+        font-weight: normal;
+        padding-bottom: 0px;
+        margin: 0px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+      h2 {
+        padding: 10px 0 5px 0;
+        margin: 15px 5px 5px 0;
+        font-size: 1.556em;
+        font-weight: normal;
+        color: #52617f;
+      }
+      h3 {
+        color: #8698ba;
+        font-size: 1.167em;
+        margin: 6px 0px 3px 0;
+        padding: 0;
+        font-weight: normal;
+        line-height: 1.42857143;
+      }
+      h3.container:first-child {
+          border-top: 0;
+      }
+      .flex-row {
+        margin: 0;
+        padding: 0;
+      }
+      .flex-row li {
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body style="visibility: visible">
+    <div class="header-message">
+      <div>XMSG("HTML - GUI Library")</div>
+      <hr class="header-ruler"></hr>
+    </div>
+	  <article id="widgetList">
+      <section>
+        <h2>XMSG("Text Box")</h2>
+        <ayx data-ui-props='{type:"TextBox", widgetId:"TextBox1"}'></ayx>
+        <h3>XMSG("Password Text Box")</h3>
+        <ayx data-ui-props='{type:"TextBox", widgetId:"PasswordBox1"}'></ayx>
+      </section>
+
+      <section>
+        <h2>XMSG("Text Area")</h2>
+        <ayx data-ui-props='{type:"TextArea", widgetId:"TextArea1", rows:5}'></ayx>
+        <h3>XMSG("Non-Resizable Text Area")</h3>
+        <ayx data-ui-props='{type:"TextArea", widgetId:"TextArea2", rows:2, resizable:false, minRows:1, maxRows:10}'></ayx>
+      </section>
+
+      <section>
+        <h2>XMSG("Numeric Spinner")</h2>
+        <ayx data-ui-props='{type:"NumericSpinner", widgetId:"NumericSpinner1"}'></ayx>
+        <h3>XMSG("Constrained Numeric Spinner (Min: -10, Max: 100, Step: 0.1)")</h3>
+        <ayx data-ui-props='{type:"NumericSpinner", widgetId:"NumericSpinner2"}'></ayx>
+      </section>
+
+      <section>
+        <h2>XMSG("Date Time Field")</h2>
+        <h3>XMSG("Date Field")</h3>
+        <ayx data-ui-props='{type:"DateTimeField", widgetId:"Date1"}' ></ayx>
+        <h3>XMSG("Time Field")</h3>
+        <ayx data-ui-props='{type:"DateTimeField", widgetId:"Time1"}' ></ayx>
+        <h3>XMSG("Date Time Field")</h3>
+        <ayx data-ui-props='{type:"DateTimeField", widgetId:"DateTime1"}' ></ayx>
+      </section>
+
+      <section>
+        <h2>XMSG("Check Box")</h2>
+        <ayx data-ui-props='{type:"CheckBox", widgetId:"CheckBox1", label:"XMSG("Alpha")"}'></ayx>
+        <ayx data-ui-props='{type:"CheckBox", widgetId:"CheckBox2", label:"XMSG("Beta")"}'></ayx>
+        <ayx data-ui-props='{type:"CheckBox", widgetId:"CheckBox3", label:"XMSG("Gamma")"}'></ayx>
+        <h3>XMSG("Indeterminate CheckBox")</h3>
+        <ayx data-ui-props='{type:"CheckBox", widgetId:"CheckBoxIndeterminate", label:"XMSG("Indeterminate")", indeterminate:true}'></ayx>
+      </section>
+
+      <section>
+        <h2>XMSG("Progress Bar")</h2>
+        <ayx data-ui-props='{type:"ProgressBar", widgetId:"ProgressBar1"}' ></ayx>
+      </section>
+
+      <section>
+        <h2>XMSG("Toggle Bar")</h2>
+        <ayx data-ui-props='{type:"ToggleBar", widgetId:"ToggleBar1"}'></ayx>
+      </section>
+	  
+	  <section>
+        <h2>XMSG("Color Picker")</h2>
+        <ayx data-ui-props='{type:"ColorPicker", widgetId:"ColorPicker1", showSwatches: true}'></ayx>
+      </section>
+
+      <section>
+        <h2>XMSG("Radio Group")</h2>
+        <ayx data-ui-props='{type:"RadioGroup", widgetId:"RadioGroup1"}' ></ayx>
+      </section>
+
+      <section>
+        <h2>XMSG("Drop Down")</h2>
+        <ayx data-ui-props='{type:"DropDown", widgetId:"DropDown1"}'></ayx>
+        <h3>XMSG("Searchable Drop Down")</h3>
+        <ayx data-ui-props='{type:"DropDown", widgetId:"DropDown2", searchable: true}'></ayx>
+      </section>
+
+      <section>
+        <h2>XMSG("List Box")</h2>
+        <ayx data-ui-props='{type:"ListBox", widgetId:"ListBox1", heightAuto: true}'></ayx>
+      </section>
+
+      <section>
+        <h2> XMSG("Button")</h2>
+        <ul class="flex-row">
+          <li>
+            <h3>XMSG("Primary Button")</h3>
+            <ayx data-ui-props='{type:"Button", widgetId:"buttonPrimary", label:"XMSG("Save")", onClick:buttonClicked, category:"primary"}'></ayx>
+          </li>
+          <li>
+            <h3>XMSG("Secondary Button")</h3>
+            <ayx data-ui-props='{type:"Button", widgetId:"buttonSecondary", label:"XMSG("Cancel")", onClick:buttonClicked, category:"secondary"}'></ayx>
+          </li>
+          <li>
+            <h3>XMSG("Image Button")</h3>
+            <ayx data-ui-props='{type:"Button", widgetId:"buttonImage", label:"Button4", size:"small", onClick:buttonClicked, category:"primary", imageSrc:"../../RuntimeData/HtmlAssets/Shared/1/img/formula/function.svg"}'></ayx>
+          </li>
+        </ul>
+      </section>
+    </article>
+
+    <script type="text/javascript">
+
+      buttonClicked = function(e) {
+        alert("Button clicked:\r\n" + e.target.innerText)
+      }
+
+      Alteryx.Gui.BeforeLoad = function (manager, AlteryxDataItems, json) {
+
+        // TextBox
+        // -------
+        // Create string data item
+        var textBoxDataItem = new AlteryxDataItems.SimpleString('TextBox')
+        manager.addDataItem(textBoxDataItem)
+        // Bind to TextBox widget
+        manager.bindDataItemToWidget(textBoxDataItem, 'TextBox1')
+
+        // Create password data item
+        var passwordDataItem = new AlteryxDataItems.SimpleString('Password', {password: true})
+        manager.addDataItem(passwordDataItem)
+        // Bind to TextBox widget
+        manager.bindDataItemToWidget(passwordDataItem, 'PasswordBox1')
+
+        // TextArea
+        // --------
+        // Create string data item
+        var textAreaDataItem = new AlteryxDataItems.SimpleString('TextArea')
+        manager.addDataItem(textAreaDataItem)
+        // Bind to TextArea widget
+        manager.bindDataItemToWidget(textAreaDataItem, 'TextArea1')
+
+        // Create string data item
+        var textAreaDataItem2 = new AlteryxDataItems.SimpleString('TextArea2')
+        manager.addDataItem(textAreaDataItem2)
+        // Bind to TextArea widget
+        manager.bindDataItemToWidget(textAreaDataItem2, 'TextArea2')
+
+        // NumericSpinner
+        // --------------
+        // Create simple float item
+        var numberDataItem = new AlteryxDataItems.SimpleFloat('Number')
+        manager.addDataItem(numberDataItem)
+        // Bind to NumericSpinner widget
+        manager.bindDataItemToWidget(numberDataItem, 'NumericSpinner1')
+
+        // Create constrained float item
+        var constrainedNumberDataItem = new AlteryxDataItems.ConstrainedFloat('ConstrainedNumber', {
+            max: 100,
+            min: -10,
+            step: 0.1
+        })
+        manager.addDataItem(constrainedNumberDataItem)
+        // Bind to NumericSpinner widget
+        manager.bindDataItemToWidget(constrainedNumberDataItem, 'NumericSpinner2')
+
+        // DateTimeField
+        // -------------
+        // Create Date Data Item
+        var dateDataItem = new AlteryxDataItems.SimpleDate('DateTime1', {
+          dateFormat: "YYYY-MM-DD"
+        })
+        manager.addDataItem(dateDataItem)
+        manager.bindDataItemToWidget(dateDataItem, 'Date1') // Bind to widget
+
+        // Create Time Data Item
+        var timeDataItem = new AlteryxDataItems.SimpleTime('DateTime2', {
+          timeFormat:"HH:mm:ss"
+        })
+        manager.addDataItem(timeDataItem)
+        manager.bindDataItemToWidget(timeDataItem, 'Time1') // Bind to widget
+
+        // Create Date Time Data Item
+        var dateTimeDataItem = new AlteryxDataItems.SimpleDateTime('DateTime3', {
+          dateFormat:"YYYY-MM-DD",
+          timeFormat:"HH:mm:ss"
+        })
+        manager.addDataItem(dateTimeDataItem)
+        manager.bindDataItemToWidget(dateTimeDataItem, 'DateTime1') // Bind to widget
+
+        // CheckBox
+        // --------
+        // Create bool data item
+        var booleanDataItem = new AlteryxDataItems.SimpleBool('CheckBox1')
+        manager.addDataItem(booleanDataItem)
+        // Bind to Checkbox widget
+        manager.bindDataItemToWidget(booleanDataItem, 'CheckBox1')
+
+        // Create bool data item
+        var booleanDataItem = new AlteryxDataItems.SimpleBool('CheckBox2')
+        manager.addDataItem(booleanDataItem)
+        // Bind to Checkbox widget
+        manager.bindDataItemToWidget(booleanDataItem, 'CheckBox2')
+
+        // Create bool data item
+        var booleanDataItem = new AlteryxDataItems.SimpleBool('CheckBox3')
+        manager.addDataItem(booleanDataItem)
+        // Bind to Checkbox widget
+        manager.bindDataItemToWidget(booleanDataItem, 'CheckBox3')
+
+        // Create bool data item
+        var booleanDataItem = new AlteryxDataItems.SimpleBool('CheckBoxIndeterminate')
+        manager.addDataItem(booleanDataItem)
+        // Bind to Checkbox widget
+        manager.bindDataItemToWidget(booleanDataItem, 'CheckBoxIndeterminate')
+
+        // Progress Bar
+        // ------------
+        var progress = new AlteryxDataItems.SimpleFloat('Progress')
+        manager.addDataItem(progress)
+        // Bind to ProgressBar widget
+        manager.bindDataItemToWidget(progress, 'ProgressBar1')
+
+        // Toggle Bar
+        // ----------
+        // Create string selector
+        var stringSelector = new AlteryxDataItems.StringSelector('ToggleStringSelector', {
+          optionList: [
+            {label: 'XMSG("Alpha")', value: "alpha"},
+            {label: 'XMSG("Beta")', value: "beta"},
+            {label: 'XMSG("Gamma")', value: "gamma"}
+          ]
+        })
+        manager.addDataItem(stringSelector)
+        manager.bindDataItemToWidget(stringSelector, 'ToggleBar1') // Bind to widget
+
+        // Color Picker
+        // ----------
+        var SimpleHexColor = new AlteryxDataItems.SimpleHexColor('ColorPickerDataItem1')
+        manager.addDataItem(SimpleHexColor)
+        manager.bindDataItemToWidget(SimpleHexColor, 'ColorPicker1') // Bind to widget
+		
+        // Radio Group
+        // -----------
+        var stringSelector = new AlteryxDataItems.StringSelector('RadioGroupStringSelector', {
+          optionList: [
+            {label: 'XMSG("Alpha")', value: "alpha"},
+            {label: 'XMSG("Beta")', value: "beta"},
+            {label: 'XMSG("Gamma")', value: "gamma"}
+          ]
+        })
+        manager.addDataItem(stringSelector)
+        manager.bindDataItemToWidget(stringSelector, 'RadioGroup1') // Bind to widget
+
+        // Drop Down
+        // ---------
+        var stringSelector = new AlteryxDataItems.StringSelector('DropDownStringSelector1', {
+          optionList: [
+            {label: 'XMSG("Alpha")', value: "alpha"},
+            {label: 'XMSG("Beta")', value: "beta"},
+            {label: 'XMSG("Gamma")', value: "gamma"}
+          ]
+        })
+        manager.addDataItem(stringSelector)
+        manager.bindDataItemToWidget(stringSelector, 'DropDown1') // Bind to widget
+
+        var stringSelector = new AlteryxDataItems.StringSelector('DropDownStringSelector2', {
+          optionList: [
+            {label: 'XMSG("Alpha")', value: "alpha"},
+            {label: 'XMSG("Beta")', value: "beta"},
+            {label: 'XMSG("Gamma")', value: "gamma"}
+          ]
+        })
+        manager.addDataItem(stringSelector)
+        manager.bindDataItemToWidget(stringSelector, 'DropDown2') // Bind to widget
+
+        var stringSelectorMulti = new AlteryxDataItems.StringSelectorMulti('ListBoxStringSelector', {
+          optionList: [
+            {label: 'XMSG("Alpha")', value: "alpha"},
+            {label: 'XMSG("Beta")', value: "beta"},
+            {label: 'XMSG("Gamma")', value: "gamma"}
+          ]
+        })
+        manager.addDataItem(stringSelectorMulti)
+        manager.bindDataItemToWidget(stringSelectorMulti, 'ListBox1')
+      }
+
+      Alteryx.Gui.AfterLoad = function (manager) {
+        // Set the value of the progress bar
+        manager.getDataItem('Progress').setValue(75)
+      }
+    </script>
+  </body>
+</html>
