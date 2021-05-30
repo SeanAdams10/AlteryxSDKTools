@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<AlteryxJavaScriptPlugin>
+  <EngineSettings EngineDll="Python" EngineDllEntryPoint="DirectoryCreateEngine.py" SDKVersion="10.1" />
+  <GuiSettings Html="DirectoryCreateGui.html" Icon="DirectoryCreateIcon.png" SDKVersion="10.1">
+    <InputConnections>
+      <Connection Name="folderInputs" AllowMultiple="True" Optional="False" Type="Connection" Label="f"/>
+    </InputConnections>
+    <OutputConnections>
+      <Connection Name="result" AllowMultiple="True" Optional="False" Type="Connection" Label="r"/>
+    </OutputConnections>
+  </GuiSettings>
+  <Properties>
+    <MetaInfo>
+      <Name>DirectoryCreate</Name>
+      <Description>This tool allows for the creation of folders for ETL Purposes</Description>
+      <ToolVersion>1.0</ToolVersion>
+      <CategoryName>Addins</CategoryName>
+      <SearchTags>python, sdk, directory, folder</SearchTags>
+      <Author>Sean Adams</Author>
+      <Company>Sean Adams</Company>
+      <Copyright>2020</Copyright>
+    </MetaInfo>
+  </Properties>
+</AlteryxJavaScriptPlugin>
+
