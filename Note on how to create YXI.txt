@@ -1,0 +1,17 @@
+- Take the tool folder and zip it so that the first folder underneath it is <myToolName>
+- Into the root of the zip - add the config.xml
+- Make sure that your files are named correctly in your tool:
+    <myToolName>Engine
+    <myToolName>Gui
+    <myToolName>Icon
+    <myToolName>Config
+    ... and the folder name has to be the same as <myToolName>
+
+
+https://help.alteryx.com/current/developer-help/yxi-packaging-and-installation
+
+
+Tools either get installed in 1 of 2 places:
+C:\Users\seanb\AppData\Roaming\Alteryx\Tools or
+C:\Program Files\Alteryx\bin\HtmlPlugins
+

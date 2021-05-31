@@ -7,12 +7,10 @@ Although defining IncomingInterface is optional, the interface methods are neede
 import os, sys
 os.environ['PATH'] = r'C:\program files\Alteryx\bin;' + os.environ['PATH']
 sys.path.insert(1, r'C:\program files\Alteryx\bin\plugins')
-import AlteryxPythonSDK
 
 import AlteryxPythonSDK as Sdk
 import xml.etree.ElementTree as Et
 import os
-
 
 
 
@@ -79,9 +77,11 @@ class AyxPlugin:
         if self.targetFolderField is None:
             self.alteryx_engine.output_message(self.n_tool_id, Sdk.EngineMessageType.error, 'Please select the target folder field')
 
-        self.output_anchor = self.output_anchor_mgr.get_output_anchor('result')  # Getting the output anchor from the XML file.
+        self.success_output_anchor = self.output_anchor_mgr.get_output_anchor('Success')  # Getting the output anchor from the XML file.
+        self.error_output_anchor = self.output_anchor_mgr.get_output_anchor('Error')  # Getting the output anchor from the XML file.
 
-        
+        self.alteryx_engine.output_message(self.n_tool_id, Sdk.EngineMessageType.info, 'Completed mapping the anchors and inputs')
+     
 
 
 
@@ -101,8 +101,11 @@ class AyxPlugin:
     
         self.alteryx_engine.output_message(self.n_tool_id, Sdk.EngineMessageType.info, self.xmsg('Method: pi_close: starting'))
 
-        self.output_anchor.assert_close()  # Checks whether connections were properly closed.
-        
+        self.success_output_anchor.assert_close()  # Checks whether connections were properly closed.
+        self.error_output_anchor.assert_close()
+        self.alteryx_engine.output_message(self.n_tool_id, Sdk.EngineMessageType.info, self.xmsg('Method: pi_close: ending'))
+
+
 
     def pi_add_incoming_connection(self, str_type: str, str_name: str) -> object:
         """
@@ -119,7 +122,12 @@ class AyxPlugin:
 
         """
     
+        self.alteryx_engine.output_message(self.n_tool_id, Sdk.EngineMessageType.info, self.xmsg('Method: pi_add_incoming_connection: starting'))
+
         self.single_input = IncomingInterface(self) #Store this for later.    This code triggers the constructor for ii
+        
+        self.alteryx_engine.output_message(self.n_tool_id, Sdk.EngineMessageType.info, self.xmsg('Method: pi_add_incoming_connection: ending'))
+
         return self.single_input
     
 
@@ -205,13 +213,16 @@ class IncomingInterface:
         record_info_in: The incoming record structure.
         """
 
+        
+
         #standard pieces
         self.parent.record_info_inbound = record_info_in
         self.record_info_inbound = record_info_in
 
-        #Set up the outbound record structure
+        #Set up the outbound record structure - in this case it will be identical to the input; except with 2 new fields
         self.record_info_out = self.record_info_inbound.clone()
         
+        #Add two additional fields to the output
         self.fldCreationResult = self.record_info_out.add_field(
                 field_name= 'FolderCreationResult', 
                 field_type=Sdk.FieldType.v_wstring, 
@@ -229,10 +240,9 @@ class IncomingInterface:
         self.fldRootFolder = self.record_info_out[self.record_info_out.get_field_num(self.parent.rootFolderField)]
         self.fldTargetFolder = self.record_info_out[self.record_info_out.get_field_num(self.parent.targetFolderField)]
         
-
         #Assign this recordInfo and recordset to the outbound anchor
-        self.parent.output_anchor.init(self.record_info_out)  # Lets the downstream tools know what the outgoing record metadata will look like, based on record_info_out.
-
+        self.parent.success_output_anchor.init(self.record_info_out)  # Lets the downstream tools know what the outgoing record metadata will look like, based on record_info_out.
+        self.parent.error_output_anchor.init(self.record_info_out)  # Lets the downstream tools know what the outgoing record metadata will look like, based on record_info_out.
 
         #Create a record Creator, from the new recordInfo structure
         self.record_creator = self.record_info_out.construct_record_creator()
@@ -244,7 +254,13 @@ class IncomingInterface:
             self.record_copier.add(index, index)
         self.record_copier.done_adding()
 
+       
+        
         return True
+
+
+
+
 
     def ii_push_record(self, in_record: object) -> bool:
         """
@@ -259,6 +275,10 @@ class IncomingInterface:
         Return False to indicate that no additional records are required.
 
         """
+        
+        
+        
+        
         #Reset the record creator and record copier to copy the fields that are staying the same
         self.record_creator.reset()
         self.record_copier.copy(self.record_creator, in_record)
@@ -268,14 +288,22 @@ class IncomingInterface:
 
         result,message = self.createFolder(strThisRowRootFolder,strThisRowTargetFolder)
 
-
-        self.fldCreationResult.set_from_string(self.record_creator,result)
+        if result:
+            self.fldCreationResult.set_from_string(self.record_creator,"True")
+        else:
+            self.fldCreationResult.set_from_string(self.record_creator,"False")
+        
         self.fldCreationDescr.set_from_string(self.record_creator,message)
 
         out_record = self.record_creator.finalize_record()
-
-        self.parent.output_anchor.push_record(out_record)
-        self.parent.output_anchor.output_record_count(False)
+        
+        if result: #if we've created a successful directory
+            self.parent.success_output_anchor.push_record(out_record)
+            self.parent.success_output_anchor.output_record_count(False)
+        else:
+            self.parent.error_output_anchor.push_record(out_record)
+            self.parent.error_output_anchor.output_record_count(False)
+        
         return True
     
 
@@ -291,7 +319,8 @@ class IncomingInterface:
         """
 
         self.parent.alteryx_engine.output_tool_progress(self.parent.n_tool_id, d_percent)  # Inform the Alteryx engine of the tool's progress.
-        self.parent.output_anchor.update_progress(d_percent)  # Inform the downstream tool of this tool's progress.
+        self.parent.success_output_anchor.update_progress(d_percent)  # Inform the downstream tool of this tool's progress.
+        self.parent.error_output_anchor.update_progress(d_percent)  # Inform the downstream tool of this tool's progress.
         
     def ii_close(self):
         """
@@ -303,8 +332,11 @@ class IncomingInterface:
         ii_close(self)
         """
 
-        self.parent.output_anchor.output_record_count(True)  # True: Let Alteryx engine know that all records have been sent downstream.
-        self.parent.output_anchor.close()  # Close outgoing connections.
+        self.parent.success_output_anchor.output_record_count(True)  # True: Let Alteryx engine know that all records have been sent downstream.
+        self.parent.success_output_anchor.close()  # Close outgoing connections.
+
+        self.parent.error_output_anchor.output_record_count(True)  # True: Let Alteryx engine know that all records have been sent downstream.
+        self.parent.error_output_anchor.close()  # Close outgoing connections.
 
 
 
@@ -314,23 +346,26 @@ class IncomingInterface:
     
         # validate if the root folder exists
         if not(os.path.isdir(rootFolder)):
-            result = 'False'
+            result = False
             message = "Root folder {} does not exist".format(rootFolder)
+            
             return result, message
+            
+        fullFolder = rootFolder + '\\' + targetFolder
 
         # Create the sub-folder
-        if os.path.isdir(targetFolder):
+        if os.path.isdir(fullFolder):
             #folder already exists
-            result = 'True'
+            result = True
             message = 'Folder already existed'
         else:
             try:
-                os.makedirs(targetFolder)
+                os.makedirs(fullFolder)
             except:
-                result = 'False'
+                result = False
                 message = 'Error while creating folder'
             else:
-                result = 'True'
+                result = True
                 message = 'Created Successfully'
         return result, message
 

@@ -3,10 +3,11 @@
   <EngineSettings EngineDll="Python" EngineDllEntryPoint="DirectoryCreateEngine.py" SDKVersion="10.1" />
   <GuiSettings Html="DirectoryCreateGui.html" Icon="DirectoryCreateIcon.png" SDKVersion="10.1">
     <InputConnections>
-      <Connection Name="folderInputs" AllowMultiple="True" Optional="False" Type="Connection" Label="f"/>
+      <Connection Name="folderInputs" AllowMultiple="False" Optional="False" Type="Connection" Label="f"/>
     </InputConnections>
     <OutputConnections>
-      <Connection Name="result" AllowMultiple="True" Optional="False" Type="Connection" Label="r"/>
+      <Connection Name="Success" AllowMultiple="True" Optional="False" Type="Connection" Label="S"/>
+      <Connection Name="Error" AllowMultiple="True" Optional="False" Type="Connection" Label="E"/>
     </OutputConnections>
   </GuiSettings>
   <Properties>
